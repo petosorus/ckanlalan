@@ -291,8 +291,15 @@
                 }
                 const leBolero = new Audio('./la-symphonie-de-l-URSSAF.mp3');
                 leBolero.loop = "true";
-                leBolero.playbackRate = Math.max(2 - (2 / 100 * distanceDebutEvenementEnJours), 0.25);
-                leBolero.volume = 1 - (distanceDebutEvenementEnJours / 100);
+
+                if (distanceDebutEvenementEnJours <= 0 && distanceFinDevenementEnJours >= 0) {
+                    leBolero.playbackRate = 1;
+                    leBolero.volume = 1;
+                } else {
+                    leBolero.playbackRate = Math.max(2 - (2 / 100 * Math.abs(distanceDebutEvenementEnJours)), 0.25);
+                    leBolero.volume = 1 - (distanceDebutEvenementEnJours / 100);
+                }
+
                 leBolero.play();
             }, false);
 
