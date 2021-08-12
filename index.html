@@ -346,8 +346,6 @@
                 }
 
                 leBolero.play();
-
-                document.getElementById('ici').className = 'disparition';
             }, false);
 
             // Calcul des dates
@@ -428,6 +426,8 @@
                 }
 
                 document.addEventListener("click", function(evt) {
+                    document.getElementById('ici').className = 'disparition';
+
                     let rouge = 0;
                     let vert = 0;
                     let bleu = 0;
