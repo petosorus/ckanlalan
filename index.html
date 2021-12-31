@@ -338,23 +338,28 @@
                 if (leBouton && leBouton.parentElement) {
                     leBouton.parentElement.removeChild(leBouton);
                 }
-                const leBolero = new Audio('./la-symphonie-de-l-URSSAF.mp3');
+                // const leBolero = new Audio('./la-symphonie-de-l-URSSAF.mp3');
+                const leBolero = new Audio('./denise.m4a');
                 leBolero.loop = "true";
 
-                if (distanceDebutEvenementEnJours <= 0 && distanceFinDevenementEnJours >= 0) {
-                    leBolero.playbackRate = 1;
-                    leBolero.volume = 1;
-                } else {
-                    leBolero.playbackRate = Math.max(2 - (2 / 100 * Math.abs(distanceDebutEvenementEnJours)), 0.25);
-                    leBolero.volume = 1 - (distanceDebutEvenementEnJours / 100);
-                }
+                leBolero.playbackRate = 1;
+                leBolero.volume = 1;
+
+                // if (distanceDebutEvenementEnJours <= 0 && distanceFinDevenementEnJours >= 0) {
+                //     leBolero.playbackRate = 1;
+                //     leBolero.volume = 1;
+                // } else {
+                //     leBolero.playbackRate = Math.max(2 - (2 / 100 * Math.abs(distanceDebutEvenementEnJours)), 0.25);
+                //     leBolero.volume = 1 - (distanceDebutEvenementEnJours / 100);
+                // }
 
                 leBolero.play();
             }, false);
 
             // Calcul des dates
-            const debutDuProchainEvenement = new Date('2021-08-13T00:00:00');
-            const finDuProchainEvenement = new Date('2021-08-22T00:00:00');
+            // const debutDuProchainEvenement = new Date('2021-08-13T00:00:00');
+            const debutDuProchainEvenement = new Date('2022-12-31T00:00:00');
+            const finDuProchainEvenement = new Date('2021-12-31T00:00:00');
             const aujourdhui = new Date();
 
             const distanceFinDevenement = finDuProchainEvenement - aujourdhui;
@@ -362,8 +367,10 @@
 
             // Fonctionnalitey impossible a tester avant la fin de l'eyveynement
             // Peut-etre que ca cassera ¯\_(ツ)_/¯
-            if (distanceFinDevenementEnJours < 0 && window.location.hostname.indexOf("ckanlalan") !== 0) {
+            if (distanceFinDevenementEnJours >= 0 && window.location.hostname.indexOf("ckanlalan") !== 0) {
                 // Autre possibilite : /^(www.)?ckanlalan.fun$/gi
+                console.log('redirect');
+                debugger;
                 window.location.href = "http://ckanlevenement.fun";
             }
 
@@ -377,11 +384,12 @@
             console.warn("prout");
 
             // Animation du bouton après un délai
-            let dureeDeLanimation = Math.min(2000, distanceDebutEvenementEnJours * 100);
+            // let dureeDeLanimation = Math.min(2000, distanceDebutEvenementEnJours * 100);
+            let dureeDeLanimation = 500;
 
-            if (distanceDebutEvenementEnJours <= 0 && distanceFinDevenementEnJours >= 0) {
-                dureeDeLanimation = 500;
-            }
+            // if (distanceDebutEvenementEnJours < 0 && distanceFinDevenementEnJours >= 0) {
+            //     dureeDeLanimation = 500;
+            // }
 
             leBouton.style.transitionDuration = dureeDeLanimation + "ms";
             leBouton.style.animationDuration = dureeDeLanimation * 10 + "ms";
@@ -410,12 +418,14 @@
                     premierJour.parentElement.removeChild(premierJour);
                 }
 
-                lelement.innerText = distanceDebutEvenementEnJours;
+                // lelement.innerText = distanceDebutEvenementEnJours;
+                lelement.innerText = '?';
                 lunitey.innerText = distanceDebutEvenementEnJours <= 1 ? "jour" : lunitey.innerText;
 
-                const dureeUn = Math.abs(.2 * distanceDebutEvenementEnJours);
-                const dureeDeux = 3 * dureeUn;
-                lelement.style.animationDuration = `${dureeUn}s, ${dureeDeux}s`;
+                // const dureeUn = Math.abs(.2 * distanceDebutEvenementEnJours);
+                // const dureeDeux = 3 * dureeUn;
+                // lelement.style.animationDuration = `${dureeUn}s, ${dureeDeux}s`;
+                lelement.style.animationDuration = '1s, 1s';
                 lelement.style.animationDirection = distanceDebutEvenementEnJours % 2 ? "alternate, normal" : "alternate, reverse";
             } else {
                 // Fonctionnalitey impossible a tester avant le debut de l'eyveynement
