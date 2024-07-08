@@ -339,17 +339,19 @@
                     leBouton.parentElement.removeChild(leBouton);
                 }
                 // const leBolero = new Audio('./la-symphonie-de-l-URSSAF.mp3');
-                const leBolero = new Audio('./denise.m4a');
+                // const leBolero = new Audio('./denise.m4a');
+                const leBolero = new Audio('./tchoutchoune.mp3');
                 leBolero.loop = "true";
 
                 leBolero.playbackRate = 1;
-                leBolero.volume = 1;
+                leBolero.volume = 0.75;
 
                 // if (distanceDebutEvenementEnJours <= 0 && distanceFinDevenementEnJours >= 0) {
                 //     leBolero.playbackRate = 1;
                 //     leBolero.volume = 1;
                 // } else {
-                //     leBolero.playbackRate = Math.max(2 - (2 / 100 * Math.abs(distanceDebutEvenementEnJours)), 0.25);
+                //     // leBolero.playbackRate = Math.max(2 - (2 / 100 * Math.abs(distanceDebutEvenementEnJours)), 0.25);
+                //     leBolero.playbackRate = Math.max(2 - (2 / 46.5 * Math.abs(distanceDebutEvenementEnJours)), 0.25);
                 //     leBolero.volume = 1 - (distanceDebutEvenementEnJours / 100);
                 // }
 
@@ -358,8 +360,9 @@
 
             // Calcul des dates
             // const debutDuProchainEvenement = new Date('2021-08-13T00:00:00');
-            const debutDuProchainEvenement = new Date('2022-12-31T00:00:00');
-            const finDuProchainEvenement = new Date('2021-12-31T00:00:00');
+            // const debutDuProchainEvenement = new Date('2022-12-31T00:00:00');
+            const debutDuProchainEvenement = new Date('2024-08-10T00:00:00');
+            const finDuProchainEvenement = new Date('2024-08-19T00:00:00');
             const aujourdhui = new Date();
 
             const distanceFinDevenement = finDuProchainEvenement - aujourdhui;
@@ -367,12 +370,12 @@
 
             // Fonctionnalitey impossible a tester avant la fin de l'eyveynement
             // Peut-etre que ca cassera ¯\_(ツ)_/¯
-            if (distanceFinDevenementEnJours >= 0 && window.location.hostname.indexOf("ckanlalan") !== 0) {
-                // Autre possibilite : /^(www.)?ckanlalan.fun$/gi
-                console.log('redirect');
-                debugger;
-                window.location.href = "http://ckanlevenement.fun";
-            }
+            // if (distanceFinDevenementEnJours >= 0 && window.location.hostname.indexOf("ckanlalan") !== 0) {
+            //     // Autre possibilite : /^(www.)?ckanlalan.fun$/gi
+            //     console.log('redirect');
+            //     debugger;
+            //     window.location.href = "http://ckanlevenement.fun";
+            // }
 
             const lelement = document.getElementById("texteNombreDeJoursAvantLEvenement");
             const lunitey = document.getElementById("texteUniteyDeTemps");
@@ -418,8 +421,8 @@
                     premierJour.parentElement.removeChild(premierJour);
                 }
 
-                // lelement.innerText = distanceDebutEvenementEnJours;
-                lelement.innerText = '?';
+                lelement.innerText = distanceDebutEvenementEnJours;
+                // lelement.innerText = '?';
                 lunitey.innerText = distanceDebutEvenementEnJours <= 1 ? "jour" : lunitey.innerText;
 
                 // const dureeUn = Math.abs(.2 * distanceDebutEvenementEnJours);
